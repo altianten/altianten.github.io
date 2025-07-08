@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portofolio - Muhammad Sian</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        header {
+            background-color: #007acc;
+            color: white;
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+        }
+        
+        nav {
+            margin-top: 1rem;
+        }
+        
+        nav a {
+            color: white;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        section {
+            margin-bottom: 3rem;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        footer {
+            background: #007acc;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #007acc;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 1rem;
+            transition: background 0.3s;
+        }
+        
+        .btn:hover {
+            background: #005f99;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Muhammad Sian</h1>
+        <p>Software Developer | Mahasiswa | Problem Solver</p>
+        <nav>
+            <a href="#about">Tentang</a>
+            <a href="#projects">Proyek</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>Halo! Saya Muhammad Sian, seorang pengembang pemula yang tertarik pada teknologi web, kecerdasan buatan, dan pengembangan perangkat lunak.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Proyek Saya</h2>
+            <div class="projects">
+                <div class="card">
+                    <h3>Virtual Keyboard Kamera</h3>
+                    <p>Keyboard berbasis gesture jari menggunakan kamera dan computer vision.</p>
+                </div>
+                <div class="card">
+                    <h3>To-Do List App</h3>
+                    <p>Aplikasi manajemen tugas dengan antarmuka minimalis.</p>
+                </div>
+                <div class="card">
+                    <h3>Portofolio Website</h3>
+                    <p>Situs pribadi yang kamu lihat sekarang. Dibuat dengan HTML dan CSS murni.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Kontak</h2>
+            <p>Ingin berkolaborasi atau ngobrol? Hubungi saya melalui email:</p>
+            <a href="mailto:sian@example.com" class="btn">Kirim Email</a>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Muhammad Sian. Dibuat dengan ❤️ menggunakan GitHub Pages.</p>
+    </footer>
+
+</body>
+
+</html>
