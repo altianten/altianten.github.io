@@ -1,140 +1,193 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portofolio - Muhammad Sian</title>
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-        
-        header {
-            background-color: #007acc;
-            color: white;
-            padding: 2rem;
-            text-align: center;
-        }
-        
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        
-        nav {
-            margin-top: 1rem;
-        }
-        
-        nav a {
-            color: white;
-            margin: 0 1rem;
-            text-decoration: none;
-            font-weight: bold;
-        }
-        
-        .container {
-            max-width: 900px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        
-        section {
-            margin-bottom: 3rem;
-        }
-        
-        .card {
-            background: white;
-            border-radius: 8px;
-            padding: 1.5rem;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .projects {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-        }
-        
-        footer {
-            background: #007acc;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-        }
-        
-        .btn {
-            display: inline-block;
-            background: #007acc;
-            color: white;
-            padding: 0.75rem 1.5rem;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 1rem;
-            transition: background 0.3s;
-        }
-        
-        .btn:hover {
-            background: #005f99;
-        }
-    </style>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portofolio - Ivan Andika Surya</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    * {box-sizing: border-box; scroll-behavior: smooth;}
+    body {
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      background-color: #f7f9fc;
+      color: #333;
+    }
 
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 2rem 1rem;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 1rem;
+      font-weight: 600;
+    }
+
+    nav {
+      margin-top: 1rem;
+    }
+
+    .hero {
+      padding: 2rem;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 2.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #007acc;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border-radius: 5px;
+      text-decoration: none;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #005f99;
+    }
+
+    section {
+      padding: 2rem 1rem;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h2 {
+      color: #007acc;
+      border-bottom: 2px solid #007acc;
+      padding-bottom: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .grid, .timeline {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    footer {
+      background: #ececec;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    .testimony {
+      background-color: #e8f4ff;
+      padding: 1rem;
+      border-left: 5px solid #007acc;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 600px) {
+      nav a {
+        display: block;
+        margin: 0.5rem 0;
+      }
+    }
+  </style>
+</head>
 <body>
 
-    <header>
-        <h1>Muhammad Sian</h1>
-        <p>Software Developer | Mahasiswa | Problem Solver</p>
-        <nav>
-            <a href="#about">Tentang</a>
-            <a href="#projects">Proyek</a>
-            <a href="#contact">Kontak</a>
-        </nav>
-    </header>
+  <header>
+    <h1>Ivan Andika Surya</h1>
+    <p>Designing, Developing, and Protecting your Web</p>
+    <nav>
+      <a href="#about">Tentang</a>
+      <a href="#experience">Pengalaman</a>
+      <a href="#skills">Keahlian</a>
+      <a href="#contact">Kontak</a>
+    </nav>
+  </header>
 
-    <div class="container">
-        <section id="about">
-            <h2>Tentang Saya</h2>
-            <p>Halo! Saya Muhammad Sian, seorang pengembang pemula yang tertarik pada teknologi web, kecerdasan buatan, dan pengembangan perangkat lunak.</p>
-        </section>
+  <div class="hero">
+    <p>Mahasiswa Teknologi Informasi di UKSW | Web Developer & Penetration Tester</p>
+    <a href="files/CV_Ivan_Andika_Surya.pdf" class="btn" download>Download CV</a>
+  </div>
 
-        <section id="projects">
-            <h2>Proyek Saya</h2>
-            <div class="projects">
-                <div class="card">
-                    <h3>Virtual Keyboard Kamera</h3>
-                    <p>Keyboard berbasis gesture jari menggunakan kamera dan computer vision.</p>
-                </div>
-                <div class="card">
-                    <h3>To-Do List App</h3>
-                    <p>Aplikasi manajemen tugas dengan antarmuka minimalis.</p>
-                </div>
-                <div class="card">
-                    <h3>Portofolio Website</h3>
-                    <p>Situs pribadi yang kamu lihat sekarang. Dibuat dengan HTML dan CSS murni.</p>
-                </div>
-            </div>
-        </section>
+  <section id="about">
+    <h2>Tentang Saya</h2>
+    <p>Saya Ivan Andika Surya, lahir di Salatiga, 21 November 2000. Saya sedang menyelesaikan studi S1 Teknologi Informasi di Universitas Kristen Satya Wacana dengan IPK 4.00 (Cum Laude). Fokus saya adalah di bidang Web Development dan Cybersecurity.</p>
+  </section>
 
-        <section id="contact">
-            <h2>Kontak</h2>
-            <p>Ingin berkolaborasi atau ngobrol? Hubungi saya melalui email:</p>
-            <a href="mailto:sian@example.com" class="btn">Kirim Email</a>
-        </section>
+  <section id="experience">
+    <h2>Pengalaman</h2>
+    <div class="timeline">
+      <div class="card">
+        <h3>IT Research & Security Specialist</h3>
+        <p><em>PT Alfamart | Sep 2023 – Sekarang</em></p>
+        <p>Membuat desktop appliance & API berbasis Python & PureBasic. Deploy ke GCP & Huawei Cloud.</p>
+      </div>
+      <div class="card">
+        <h3>IT Programmer Intern</h3>
+        <p><em>PT Alfamart | Sep 2022 – Aug 2023</em></p>
+        <p>Bangun form berbasis Webix & JavaScript, migrasi data dari Oracle Forms ke PostgreSQL berbasis web.</p>
+      </div>
+      <div class="card">
+        <h3>Freelance Developer</h3>
+        <p><em>2022 – 2024</em></p>
+        <p>Mengerjakan platform survey sanitasi, PPID Desa, company profile, dan sistem psikotes dengan Laravel & CodeIgniter.</p>
+      </div>
     </div>
+  </section>
 
-    <footer>
-        <p>&copy; 2025 Muhammad Sian. Dibuat dengan ❤️ menggunakan GitHub Pages.</p>
-    </footer>
+  <section id="skills">
+    <h2>Keahlian</h2>
+    <div class="grid">
+      <div class="card"><strong>Bahasa:</strong><br>PureBasic, Python, PHP, JS, C/C++</div>
+      <div class="card"><strong>Framework:</strong><br>Flask, Falcon, Laravel, CodeIgniter</div>
+      <div class="card"><strong>Database:</strong><br>MySQL, PostgreSQL, MongoDB</div>
+      <div class="card"><strong>Security:</strong><br>Burp Suite, sqlmap, Metasploit</div>
+    </div>
+  </section>
+
+  <section id="testimony">
+    <h2>Testimoni</h2>
+    <div class="testimony">
+      <p><strong>Septovan Saian:</strong> “Ivan memiliki jiwa artistik dan perhatian besar terhadap detail.”</p>
+      <p><strong>Choirul Huda:</strong> “Ivan sangat antusias di dunia penetration testing dan cepat belajar.”</p>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Kontak</h2>
+    <p>Email: <a href="mailto:ivanandikasurya21@gmail.com">ivanandikasurya21@gmail.com</a></p>
+    <p>📱 +62 895-3917-03636</p>
+    <p>📍 Tangerang, Banten & Salatiga, Jawa Tengah</p>
+    <p>LinkedIn | GitHub | Instagram</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Ivan Andika Surya. Dibuat dengan ❤️ menggunakan GitHub Pages.</p>
+  </footer>
 
 </body>
-
 </html>
