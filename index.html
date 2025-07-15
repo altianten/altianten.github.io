@@ -1,193 +1,417 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en" class="scroll-smooth">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portofolio - Ivan Andika Surya</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-  <style>
-    * {box-sizing: border-box; scroll-behavior: smooth;}
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      background-color: #f7f9fc;
-      color: #333;
-    }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+        }
+    </script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .body {
+            font-family: "Inter", sans-serif
+        }
 
-    header {
-      background-color: #007acc;
-      color: white;
-      padding: 2rem 1rem;
-      text-align: center;
-    }
+        html {
+            scroll-behavior: smooth;
+        }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: 600;
-    }
-
-    nav {
-      margin-top: 1rem;
-    }
-
-    .hero {
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .hero h1 {
-      font-size: 2.5rem;
-      margin: 0.5rem 0;
-    }
-
-    .hero p {
-      font-size: 1.1rem;
-      color: #555;
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      background-color: #007acc;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border-radius: 5px;
-      text-decoration: none;
-      transition: background 0.3s;
-    }
-
-    .btn:hover {
-      background-color: #005f99;
-    }
-
-    section {
-      padding: 2rem 1rem;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    h2 {
-      color: #007acc;
-      border-bottom: 2px solid #007acc;
-      padding-bottom: 0.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .grid, .timeline {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .card {
-      background: white;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-      transition: transform 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
-      background: #ececec;
-      padding: 1rem;
-      text-align: center;
-      font-size: 0.9rem;
-    }
-
-    .testimony {
-      background-color: #e8f4ff;
-      padding: 1rem;
-      border-left: 5px solid #007acc;
-      margin: 1rem 0;
-    }
-
-    @media (max-width: 600px) {
-      nav a {
-        display: block;
-        margin: 0.5rem 0;
-      }
-    }
-  </style>
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease-out;
+        }
+        .caveat {
+            font-family: 'Caveat', cursive;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .rotate-icon {
+            transition: transform 0.5s ease;
+        }
+        
+        .rotate-icon.rotate {
+            transform: rotate(180deg);
+        }
+        
+        .circle-expand {
+            width: 250vmax;
+            height: 250vmax;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
+        }
+    </style>
 </head>
-<body>
 
-  <header>
-    <h1>Ivan Andika Surya</h1>
-    <p>Designing, Developing, and Protecting your Web</p>
-    <nav>
-      <a href="#about">Tentang</a>
-      <a href="#experience">Pengalaman</a>
-      <a href="#skills">Keahlian</a>
-      <a href="#contact">Kontak</a>
+<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
+    <!-- Navbar -->
+    <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
+        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Portfolio</h1>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-700 dark:text-gray-200">
+                <a href="#about" class="block hover:text-blue-600 dark:hover:text-blue-400">About</a>
+                <a href="#skills" class="block hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
+                <a href="#experience" class="block hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
+                <a href="#portfolio" class="block hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+                <a href="#certificates" class="block hover:text-blue-600 dark:hover:text-blue-400">Certificates</a>
+                <a href="#contact" class="block hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+            </div>
+            <!-- Dark Mode Button -->
+            <div class="flex items-center space-x-3">
+                <button id="toggleTheme" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-xl">
+        <i id="themeIcon" class="ph ph-moon rotate-icon"></i>
+      </button>
+                <!-- Mobile Toggle -->
+                <button id="menuToggle" class="md:hidden text-2xl text-gray-700 dark:text-gray-200 focus:outline-none">
+        <i class="ph ph-list"></i>
+      </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobileMenu" class="md:hidden hidden flex-col px-6 pb-4 space-y-2 text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900">
+            <a href="#about" class="block hover:text-blue-600 dark:hover:text-blue-400">About</a>
+            <a href="#skills" class="block hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
+            <a href="#experience" class="block hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
+            <a href="#portfolio" class="block hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
+            <a href="#certificates" class="block hover:text-blue-600 dark:hover:text-blue-400">Certificates</a>
+            <a href="#contact" class="block hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+        </div>
     </nav>
-  </header>
 
-  <div class="hero">
-    <p>Mahasiswa Teknologi Informasi di UKSW | Web Developer & Penetration Tester</p>
-    <a href="files/CV_Ivan_Andika_Surya.pdf" class="btn" download>Download CV</a>
-  </div>
 
-  <section id="about">
-    <h2>Tentang Saya</h2>
-    <p>Saya Ivan Andika Surya, lahir di Salatiga, 21 November 2000. Saya sedang menyelesaikan studi S1 Teknologi Informasi di Universitas Kristen Satya Wacana dengan IPK 4.00 (Cum Laude). Fokus saya adalah di bidang Web Development dan Cybersecurity.</p>
-  </section>
+    <!-- Hero Section -->
+    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200 dark:from-gray-800 dark:to-gray-900 pt-20">
+        <div class="text-center fade-in max-w-4xl mx-auto px-4">
+            <h2 class="text-4xl font-bold mb-4">Hi, I'm Altianten Nevada Wijaya</h2>
+            <p class="text-lg">A passionate developer delivering modern web experiences, and a junior data analyst developing predictive models, insightful visualizations, and intelligent digital solutions.</p>
+            <div class="mt-6" >
+                <a href="cv-altianten.pdf" download 
+                class="block w-full sm:w-auto text-white px-6 py-3 rounded-full font-bold text-center hover:opacity-90 transition 
+                bg-gray-800 dark:bg-white dark:text-gray-900"> 📄 Download CV
+            </a>
 
-  <section id="experience">
-    <h2>Pengalaman</h2>
-    <div class="timeline">
-      <div class="card">
-        <h3>IT Research & Security Specialist</h3>
-        <p><em>PT Alfamart | Sep 2023 – Sekarang</em></p>
-        <p>Membuat desktop appliance & API berbasis Python & PureBasic. Deploy ke GCP & Huawei Cloud.</p>
-      </div>
-      <div class="card">
-        <h3>IT Programmer Intern</h3>
-        <p><em>PT Alfamart | Sep 2022 – Aug 2023</em></p>
-        <p>Bangun form berbasis Webix & JavaScript, migrasi data dari Oracle Forms ke PostgreSQL berbasis web.</p>
-      </div>
-      <div class="card">
-        <h3>Freelance Developer</h3>
-        <p><em>2022 – 2024</em></p>
-        <p>Mengerjakan platform survey sanitasi, PPID Desa, company profile, dan sistem psikotes dengan Laravel & CodeIgniter.</p>
-      </div>
-    </div>
-  </section>
+            </div>
+        </div>
+    </section>
 
-  <section id="skills">
-    <h2>Keahlian</h2>
-    <div class="grid">
-      <div class="card"><strong>Bahasa:</strong><br>PureBasic, Python, PHP, JS, C/C++</div>
-      <div class="card"><strong>Framework:</strong><br>Flask, Falcon, Laravel, CodeIgniter</div>
-      <div class="card"><strong>Database:</strong><br>MySQL, PostgreSQL, MongoDB</div>
-      <div class="card"><strong>Security:</strong><br>Burp Suite, sqlmap, Metasploit</div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="min-h-screen px-6 py-20 bg-white dark:bg-gray-900">
+        <div class="max-w-4xl mx-auto px-4 fade-in" style="margin-bottom: 200px;">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                About Me
+                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
+            </h3>
+            <p class="text-lg mb-6 text-justify">
+                I am a fresh graduate in Informatics Engineering with a focus on Data Science from Universitas Kristen Satya Wacana. I have a strong passion for data analysis, predictive modeling, and building intelligent solutions. With hands-on experience in data-driven
+                projects and web development, I strive to combine logic and creativity in everything I build.
+            </p>
 
-  <section id="testimony">
-    <h2>Testimoni</h2>
-    <div class="testimony">
-      <p><strong>Septovan Saian:</strong> “Ivan memiliki jiwa artistik dan perhatian besar terhadap detail.”</p>
-      <p><strong>Choirul Huda:</strong> “Ivan sangat antusias di dunia penetration testing dan cepat belajar.”</p>
-    </div>
-  </section>
+            <p class="text-lg mb-6 text-justify">
+                During my internship as a Data Analyst, I led a data team in delivering predictive models with 85% accuracy and received internal recognition for analytical excellence. I’ve also worked on machine learning projects involving time-series prediction and
+                classification, supported by data visualization to deliver actionable insights.
+            </p>
 
-  <section id="contact">
-    <h2>Kontak</h2>
-    <p>Email: <a href="mailto:ivanandikasurya21@gmail.com">ivanandikasurya21@gmail.com</a></p>
-    <p>📱 +62 895-3917-03636</p>
-    <p>📍 Tangerang, Banten & Salatiga, Jawa Tengah</p>
-    <p>LinkedIn | GitHub | Instagram</p>
-  </section>
+            <p class="text-lg mb-6 text-justify">
+                I am committed to continuous learning, clear communication, and delivering valuable contributions in every project. Whether working independently or as part of a team, I always aim for data-informed decisions and impactful digital solutions.
+            </p>
+        
+        </div>
+        <div class="max-w-4xl mx-auto px-4 fade-in grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
+            <!-- Kolom Kiri: Efek Mengetik -->
+            <div class="text-left leading-snug text-6xl font-semibold caveat">
+                I turn ideas
+                <br>
+                into
+                <br>
+                <span id="typed-text" class="text-#212529"></span><span id="cursor" class="animate-pulse">|</span>
+            </div>
 
-  <footer>
-    <p>&copy; 2025 Ivan Andika Surya. Dibuat dengan ❤️ menggunakan GitHub Pages.</p>
-  </footer>
+            <!-- Kolom Kanan: Placeholder Teks -->
+            <div class="text-left text-base text-justify leading-relaxed">
+                <h3 class="text-4xl text-lg mb-2 text-justify" style="font-size: 28px;">
+                    Harnessing Data and Code to Drive Impact:
+                </h3>
+                <span>
+                    With a strong foundation in data analysis, machine learning, and web development, I build predictive models, uncover insights, and develop intuitive web-based solutions — helping people and organizations make smarter, faster, and more meaningful decisions
+                </span>
+            <!-- Tambahkan konten kamu di sini nanti -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section-->
+    <section id="skills" class="px-6 py-20 bg-white dark:bg-gray-800">
+        <div class="max-w-5xl mx-auto fade-in">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                Skills
+                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
+            </h3>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Python</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Excel</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Data Analysis</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">SQL</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Power BI</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">SPSS</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">HTML</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">CSS</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">JavaScript</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Tailwind CSS</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">PHP Laravel</span>
+                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Figma</span>
+
+            </div>
+        </div>
+    </section>
+
+    <!--Experience Section-->
+    <section id="experience" class="px-6 py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto fade-in">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                Experiences
+                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
+            </h3>
+            <div class="max-w-5xl mx-auto px-4 space-y-6">
+                <div>
+                    <strong>Data Analyst Intern</strong>
+                    - PT Zona Akselerasi Pendidikan (Zenius Education)
+                    <em>(Aug 2022 - Dec 2022)</em>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Performed feature engineering, including missing value treatment, categorical encoding, and numerical feature scaling.</li>
+                        <li>Conducted exploratory data analysis (EDA) to uncover relationships between customer behavior and default risk.</li>
+                        <li>Built and evaluated classification models (Logistic Regression, Random Forest, XGBoost) to predict credit default risk, optimized using AUC and accuracy metrics.</li>
+                        <li>Merged and cleaned multiple datasets (application, bureau, credit card, etc.) to build a consolidated and reliable training dataset.</li>
+                    </ul>
+                </div>
+                <div>
+                    <strong>Volunteer Web Developer</strong>
+                    - Desa Wisata Digital Tingkir Lor
+                    <em>(Jan 2025 - Jun 2025)</em>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Designed and developed a responsive tourism website from scratch using HTML, CSS, JavaScript, and Laravel.</li>
+                        <li>Created content structure and navigation for showcasing attractions, events, culture, and local products.</li>
+                        <li>Integrated features such as contact forms, maps, and image galleries to support tourism promotion.</li>
+                        <li>Deployed the website to live hosting and configured domain, ensuring the site is accessible, mobile-friendly, and runs smoothly in production.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="px-6 py-20 bg-gray-50 dark:bg-gray-800">
+        <div class="max-w-5xl mx-auto">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                Projects
+                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
+            </h3>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
+                    <img src="assets/HCR.png" alt="" class="w-full h-50 object-cover rounded mb-4">
+                    <strong>Home Credit Risk</strong>
+                    <p class="mb-2" style="text-align: justify;">This project focuses on predicting the likelihood of credit default using the publicly available Home Credit Default Risk dataset. The workflow involves data cleaning, preparation, and applying automated feature engineering techniques using the FeatureTools library. Multiple relational tables such as application_train, bureau, and previous_application are integrated and transformed into a comprehensive dataset ready for machine learning.</p>
+                    <a href="https://github.com/ianngrho/data-analyst-portofolio/tree/main/home-credit-risk" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
+                    <img src="assets/actualvspredicted.png" alt="" class="w-full h-50 object-cover rounded mb-4">
+                    <strong class="text-xl font-semibold mb-2">Cryptocurrency</strong>
+                    <p class="mb-2" style="text-align: justify;">This project aims to forecast cryptocurrency closing prices using historical data and deep learning. The dataset is preprocessed through normalization and transformation into time-series sequences suitable for LSTM modeling. The model is built using TensorFlow and Keras to learn temporal patterns and trends in the price data, helping to make future price predictions based on past values.</p>
+                    <a href="https://github.com/ianngrho/data-analyst-portofolio/tree/main/crypto-price-prediction" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
+                </div>
+                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
+                    <img src="assets/average_stress_by_country.png" alt="" class="w-full h-50 object-cover rounded mb-4">
+                    <strong>Global High School Student Wellness</strong>
+                    <p class="mb-2" style="text-align: justify;">This project explores and visualizes key aspects of global high school student wellness using multiple datasets. The analysis covers exam preparation status, average stress levels by country, AI technology usage among students, and broader student lifestyle indicators. The project aims to uncover patterns and regional differences that can inform educational and mental health interventions for youth.</p>
+                    <a href="https://github.com/ianngrho/data-analyst-portofolio/tree/main/student-wellbeing-analysis" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section-->
+    <section id="certificates" class="px-6 py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="max-w-5xl mx-auto px-4 space-y-6 fade-in">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                Certificates
+
+            </h3>
+            <ul class="list-disc pl-5 space-y-2">
+                <li>
+                    <em>
+                        (Jun 2022)
+                    </em>DevOps CI/CD Development, BuildWithAngga
+                </li>
+                <li>
+                    <em>
+                        (Feb 2022)
+                    </em>Data Wrangling Python, DQLab
+                </li>
+                <li>
+                    <em>
+                        (Feb 2022)
+                    </em>Python Fundamental for Data Science, DQLab
+                </li>
+                <li>
+                    <em>
+                        (Dec 2021)
+                    </em>Database Programming with PL/SQL, ORACLE Academy
+                </li>
+                <li>
+                    <em>
+                        (Jul 2021)
+                    </em>Database Design and Programming with SQL, ORACLE Academy
+                </li>
+                <li>
+                    <em>
+                        (Jan 2021)
+                    </em>Full-Stack Website Developer, BuildWithAngga
+                </li>
+                <li>
+                    <em>
+                        (Jan 2021)
+                    </em>Python Fundamental for Software Developmnet, Progate
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!--Contact Sections-->
+    <section id="contact" class="px-6 py-20 bg-gray-100 dark:bg-gray-800">
+        <div class="max-w-xl mx-auto fade-in ">
+            <h3 class="text-4xl font-bold mb-6 text-center relative">
+                Contact Me
+                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
+            </h3>
+            <p class="text-lg mb-2 text-justify relative">Feel free to reach out — I'd love to hear from you.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg mt-10">
+                <!-- 🔹 Kolom Kiri -->
+                <div class="flex justify-center flex-col gap-3">
+                    <strong>Social</strong>
+                    <a href="mailto:muhammadsian00@gmail.com" class="hover:underline text-#212529">
+                    muhammadsian00@gmail.com
+                    </a>
+                    <a href="https://linkedin.com/in/muhammad-septian-nugroho" target="_blank" class="hover:underline text-#212529">
+                    LinkedIn
+                    </a>
+                    <a href="https://instagram.com/altianten" target="_blank" class="hover:underline text-#212529">
+                    Instagram
+                    </a>
+                    <a href="https://github.com/ianngrho" target="_blank" class="hover:underline text-#212529">
+                    GitHub
+                    </a>
+                </div>
+                <!-- 🔹 Kolom Kanan -->
+                <div class="flex flex-col gap-3 fade-in max-w-5xl mx-auto px-4 space-y-2 fade-in">
+                    <strong>Phone</strong>
+                    <a href="https://wa.me/6282325279005" target="_blank" class="hover:underline text-green-600">
+                    WhatsApp: +62 823-2527-9005
+                    </a>
+                    <strong>Location</strong>
+                    <p class="">
+                    Salatiga (50746)
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        </div>
+    </section>
+
+    <footer class="text-center py-6 bg-gray-100 dark:bg-gray-800">
+        <p>&copy; 2025 - Muhammad Septian Nugroho</p>
+    </footer>
+
+    <script>
+        const themeBtn = document.getElementById('toggleTheme');
+        const icon = document.getElementById('themeIcon');
+
+        themeBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+            icon.classList.add('rotate');
+            setTimeout(() => {
+                icon.classList.toggle('ph-moon');
+                icon.classList.toggle('ph-sun');
+                icon.classList.remove('rotate');
+            }, 300);
+        });
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+        if (document.documentElement.classList.contains('dark')) {
+            icon.classList.remove('ph-moon');
+            icon.classList.add('ph-sun');
+        } else {
+            icon.classList.remove('ph-sun');
+            icon.classList.add('ph-moon');
+        }
+    </script>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const mobileMenu = document.getElementById('mobileMenu');
+
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+    <script>
+        let wordIndex = 0;
+        let charIndex = 0;
+        let typing = true;
+        
+        const typedText = document.getElementById("typed-text");
+        const cursor = document.getElementById("cursor");
+        
+        function type() {
+            const currentWord = words[wordIndex];
+            if (typing) {
+                if (charIndex < currentWord.length) {
+                    typedText.textContent += currentWord.charAt(charIndex);
+                    charIndex++;
+                    setTimeout(type, 100);
+                } else {
+                    typing = false;
+                    setTimeout(type, 1500); // Wait before deleting
+                }
+            } else {
+                if (charIndex > 0) {
+                    typedText.textContent = currentWord.substring(0, charIndex - 1);
+                    charIndex--;
+                    setTimeout(type, 50);
+                } else {
+                    typing = true;
+                    wordIndex = (wordIndex + 1) % words.length;
+                    setTimeout(type, 200);
+                }
+            }
+        }
+        const words = ["Design", "Systems", "Insight"];
+        type();
+    </script>
 
 </body>
+
 </html>
