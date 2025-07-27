@@ -90,7 +90,11 @@
         </div>
     </nav>
 
-
+    <div id="floatingBox" class="fixed top-1/2 left-4 -translate-y-1/2 bg-white border border-gray-300 shadow-lg rounded-lg p-3 w-64 sm:w-56 md:w-48 z-50 opacity-0 transition-opacity duration-700">
+        <h3 class="text-base font-semibold mb-1">👋 Welcome!</h3>
+        <p class="text-sm text-gray-700">Thanks for visiting my portfolio!</p>
+    </div>
+    
     <!-- Hero Section -->
     <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200 dark:from-gray-800 dark:to-gray-900 pt-20">
         <div class="text-center fade-in max-w-4xl mx-auto px-4">
@@ -476,6 +480,12 @@
         }
         const words = ["Design", "Systems", "Insight"];
         type();
+    </script>
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const box = document.getElementById('floatingBox');
+            box.classList.add('opacity-100');
+        });
     </script>
 
 </body>
