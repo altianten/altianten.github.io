@@ -6,7 +6,7 @@
 
 A comprehensive machine learning project that predicts renewable energy production trends for 2025 using advanced modeling techniques. This project analyzes global renewable energy data across multiple countries and energy sources to forecast production patterns, identify key influencing factors, and provide actionable insights for energy planning.
 
-## 📑 Table of Contents
+## Table of Contents
 
 -   [Project Overview](#-project-overview)
 -   [Features](#-features)
@@ -14,19 +14,19 @@ A comprehensive machine learning project that predicts renewable energy producti
 -   [Project Structure](#-project-structure)
 -   [Results](#-results)
 -   [How to Run](#-how-to-run)
--   [Technologies Used](#-Technologies-Used)
+-   [Technologies Used](#-technologies-used)
 -   [Future Work](#-future-work)
 -   [License](#-license)
 -   [Author](#-author)
 
-## 📌 Project Overview
+## Project Overview
 
 This project demonstrates an end-to-end data science workflow: - Data
 Preprocessing & Feature Engineering - Model Training: Random Forest,
 Gradient Boosting, XGBoost, and more - Model Performance Comparison -
 Feature Importance Analysis - Model Exporting for Deployment
 
-## 🚀 Features
+## Features
 
 - **Data Simulation**: Generates realistic global renewable energy dataset for 2025
 - **Exploratory Data Analysis**: Comprehensive visualizations and statistical analysis
@@ -37,7 +37,7 @@ Feature Importance Analysis - Model Exporting for Deployment
 - **Model Interpretation**: SHAP values for explainable AI insights
 - **Comprehensive Visualizations**: Production trends, efficiency distributions, and feature importance
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 -   Python 3.10+
 -   Pandas, NumPy for data processing
@@ -45,7 +45,7 @@ Feature Importance Analysis - Model Exporting for Deployment
 -   Scikit-learn, XGBoost for modeling
 -   Jupyter Notebook for experimentation
 
-## 📂 Project Structure
+## Project Structure
 
 ```bash
     ├── RENEWABLE_ENERGY_TRENDS_PREDICTION_2025.ipynb  # Main notebook
@@ -55,24 +55,24 @@ Feature Importance Analysis - Model Exporting for Deployment
     └── README.md                                     # Project documentation
 ```
 
-## 📊 Results
+## Results
 
 ### Key Findings
-    - Best Performing Model: XGBoost achieved the highest R² score (0.98+)
-    - Most Influential Feature: Capacity utilization was the strongest predictor of production
-    - Top Energy Source: Solar energy showed the highest production globally
-    - Leading Country: China demonstrated the highest renewable energy production
+- Best Performing Model: XGBoost achieved the highest R² score (0.98+)
+- Most Influential Feature: Capacity utilization was the strongest predictor of production
+- Top Energy Source: Solar energy showed the highest production globally
+- Leading Country: China demonstrated the highest renewable energy production
 
 ### Visualizations
 The project generates several insightful visualizations:
-    - Monthly production trends by energy source
-    - Country-wise production comparison
-    - Efficiency distribution across energy sources
-    - Feature importance analysis
-    - SHAP dependence plots
-    - Model training history for LSTM
+- Monthly production trends by energy source
+- Country-wise production comparison
+- Efficiency distribution across energy sources
+- Feature importance analysis
+- SHAP dependence plots
+- Model training history for LSTM
 
-## 💻 How to Run
+## How to Run
 
 1.  Clone this repository:
 
@@ -97,13 +97,13 @@ The project generates several insightful visualizations:
 
 ## Technologies Used
 
-    - **Programming Language**: Python 3.8+
-    - **Data Processing**: Pandas, NumPy
-    - **Visualization**: Matplotlib, Seaborn
-    - **Machine Learning**: Scikit-learn, XGBoost
-    - **Deep Learning**: TensorFlow, Keras
-    - **Model Interpretation**: SHAP
-    - **Development Environment**: Google Colab, Jupyter Notebook
+- **Programming Language**: Python 3.8+
+- **Data Processing**: Pandas, NumPy
+- **Visualization**: Matplotlib, Seaborn
+- **Machine Learning**: Scikit-learn, XGBoost
+- **Deep Learning**: TensorFlow, Keras
+- **Model Interpretation**: SHAP
+- **Development Environment**: Google Colab, Jupyter Notebook
 
 ## Future Work
 
@@ -124,6 +124,6 @@ The project generates several insightful visualizations:
     - Analyze economic impacts of energy transition
     - Assess social implications of renewable energy adoption
 
-## 📝 License
+## License
 
 This project is open-source and available under the MIT License.
