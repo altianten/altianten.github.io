@@ -8,15 +8,15 @@ A comprehensive machine learning project that predicts renewable energy producti
 
 ## Table of Contents
 
-[Project Overview](#project-overview)
-[Features](#features)
-[Tech Stack](#tech-stack)
-[Project Structure](#project-structure)
-[Results](#results)
-[How to Run](#how-to-run)
-[Technologies Used](#technologies-used)
-[Future Work](#future-work)
-[License](#license)
+- [Project Overview](#project-overview)
+- [Features](#features)
+- [Tech Stack](#tech-stack)
+- [Project Structure](#project-structure)
+- [Results](#results)
+- [How to Run](#how-to-run)
+- [Technologies Used](#technologies-used)
+- [Future Work](#future-work)
+- [License](#license)
 
 ## Project Overview
 
