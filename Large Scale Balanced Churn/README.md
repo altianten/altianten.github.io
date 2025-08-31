@@ -142,6 +142,7 @@ cd large-scale-churn-predictor
 ```
 
 ## File Structure
+```bash
 large-scale-churn-predictor/
 │
 ├── large_scale_balanced_churn_predictor.py  # Main implementation
@@ -152,6 +153,7 @@ large-scale-churn-predictor/
 └── results/                                 # Output directory
     ├── model_predictions.csv                # Model predictions
     └── performance_metrics.txt              # Detailed performance metrics
+```
 
 ## Results and Visualizations
 
