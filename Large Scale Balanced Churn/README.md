@@ -123,7 +123,7 @@ The model achieved the following performance on a test set of 10,000 samples:
 | ROC AUC | 0.998 |
 
 ### Confusion Matrix
-![Confusion Matrix](confusion_matrix.png)
+![Confusion Matrix](images/confusion_matrix.png)
 
 ## How to Run the Code
 
@@ -165,9 +165,9 @@ The project implements several key strategies to minimize memory usage:
 
 1. **Chunked Processing**: Data is generated and processed in chunks of 10,000 records
 2. **Efficient Data Types**:
-- int8 for binary flags and labels
-- float16 for image features
-- Sparse matrices for categorical features
+   - int8 for binary flags and labels
+   - float16 for image features
+   - Sparse matrices for categorical features
 3. **Feature Selection**: SelectKBest reduces dimensionality to top 20 features
 4. **Minimal Neural Architecture**: Small embedding dimensions and layer sizes
 5. **Garbage Collection**: Explicit memory cleanup after processing chunks
