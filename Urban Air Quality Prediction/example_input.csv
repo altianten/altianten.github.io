@@ -1,2 +1,0 @@
-temperature,humidity,wind_speed,ndvi,ndbi,aod,lst,traffic_volume,day_of_week,month,pm25_lag1,no2_lag1,pm25_7day_avg,no2_7day_avg,location_Downtown,location_Industrial Zone,location_Residential Area,location_Suburb,season_Spring,season_Summer,season_Winter
-15.30598209233277,49.36610613556382,3.636394620112696,0.4501309632936606,0.7699051039677827,0.015544216391469606,26.035252004004988,119739.19728761836,1,1,20.458041871862505,32.441774570227366,20.89025832285665,32.32373111818461,False,False,False,False,False,False,True
