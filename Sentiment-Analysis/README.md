@@ -26,10 +26,10 @@ Hasil akhirnya berupa aplikasi interaktif berbasis **Streamlit** yang dapat memp
 ## 🛠️ Instalasi
 
 1. Clone repository:
-   ```bash
-   git clone https://github.com/username/shopee-sentiment-analysis.git
+```bash
+   git clone https://github.com/altianten/shopee-sentiment-analysis.git
    cd shopee-sentiment-analysis
-   ```
+```
 2. Buat virtual environment (opsional tapi disarankan):
 ```bash
    python -m venv venv
