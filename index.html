@@ -26,104 +26,51 @@
     <style>
         /* --- 1. CSS VARIABLES --- */
         :root {
-            --bg: #0f172a;        /* Slate 900 */
-            --surface: #1e293b;   /* Slate 800 */
-            --text-primary: #f8fafc;
-            --text-secondary: #94a3b8;
-            --accent: #38bdf8;    /* Sky Blue */
-            --accent-glow: rgba(56, 189, 248, 0.15);
+            --bg: #0f172a; --surface: #1e293b; --text-primary: #f8fafc;
+            --text-secondary: #94a3b8; --accent: #38bdf8; --accent-glow: rgba(56, 189, 248, 0.15);
             --border: rgba(255, 255, 255, 0.1);
-            
-            --font-main: 'Outfit', sans-serif;
-            --font-code: 'JetBrains Mono', monospace;
+            --font-main: 'Outfit', sans-serif; --font-code: 'JetBrains Mono', monospace;
         }
-
         body.light-mode {
-            --bg: #f8fafc;
-            --surface: #ffffff;
-            --text-primary: #0f172a;
-            --text-secondary: #64748b;
-            --accent: #0284c7;    /* Deep Blue */
-            --accent-glow: rgba(2, 132, 199, 0.1);
+            --bg: #f8fafc; --surface: #ffffff; --text-primary: #0f172a;
+            --text-secondary: #64748b; --accent: #0284c7; --accent-glow: rgba(2, 132, 199, 0.1);
             --border: rgba(0, 0, 0, 0.1);
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            background-color: var(--bg);
-            color: var(--text-primary);
-            font-family: var(--font-main);
-            line-height: 1.6;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 20px;
-        }
+        html { scroll-behavior: smooth; }
+        body { background-color: var(--bg); color: var(--text-primary); font-family: var(--font-main); line-height: 1.6; transition: 0.3s ease; overflow-x: hidden; }
+        .container { max-width: 1000px; margin: 0 auto; padding: 20px; }
 
         /* --- 2. ANIMATION CLASSES --- */
-        .reveal {
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-delay-1 { transition-delay: 0.1s; }
-        .reveal-delay-2 { transition-delay: 0.2s; }
-        .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
 
         /* --- 3. NAV --- */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 0;
-            margin-bottom: 40px;
-            animation: fadeInDown 1s ease-out;
-        }
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 40px; animation: fadeInDown 1s ease-out; }
+        @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
         .brand { font-family: var(--font-code); font-weight: 700; color: var(--accent); font-size: 1.1rem; }
-        .theme-toggle {
-            background: var(--surface); border: 1px solid var(--border); color: var(--text-primary);
-            width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex;
-            align-items: center; justify-content: center; transition: 0.3s;
-        }
+        .theme-toggle { background: var(--surface); border: 1px solid var(--border); color: var(--text-primary); width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; }
         .theme-toggle:hover { background: var(--border); color: var(--accent); }
 
         /* --- 4. HERO SECTION --- */
         .hero { text-align: center; margin-bottom: 60px; }
-        
         .avatar-container { width: 140px; height: 140px; margin: 0 auto 20px; position: relative; }
-        .avatar-img { 
-            width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
-            border: 3px solid var(--accent); background-color: var(--surface); 
-            box-shadow: 0 0 20px var(--accent-glow);
-            transition: transform 0.5s ease;
-        }
+        .avatar-img { width: 100%; height: 100%; border-radius: 50%; object-fit: cover; border: 3px solid var(--accent); background-color: var(--surface); box-shadow: 0 0 20px var(--accent-glow); transition: transform 0.5s ease; }
         .avatar-img:hover { transform: scale(1.05); }
-        
         .hero h1 { font-size: 2.5rem; margin-bottom: 8px; font-weight: 700; letter-spacing: -1px; }
+        
+        /* NEW: TYPEWRITER STYLE */
         .role-badge { 
             display: inline-block; background: var(--accent-glow); color: var(--accent); 
-            padding: 6px 16px; border-radius: 50px; font-size: 0.9rem; 
-            font-family: var(--font-code); margin-bottom: 20px; border: 1px solid var(--accent); 
+            padding: 6px 16px; border-radius: 50px; font-size: 0.95rem; 
+            font-family: var(--font-code); margin-bottom: 20px; border: 1px solid var(--accent);
+            min-width: 250px; /* Mencegah layout goyang saat teks berubah */
         }
-        .bio-text { color: var(--text-secondary); max-width: 750px; margin: 0 auto 30px; font-size: 1.1rem; }
+        .cursor { display: inline-block; width: 8px; background-color: var(--accent); animation: blink 1s infinite; }
+        @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
-        /* Buttons */
+        .bio-text { color: var(--text-secondary); max-width: 750px; margin: 0 auto 30px; font-size: 1.1rem; }
         .action-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
         .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 1rem; }
         .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); font-weight: 600; }
@@ -131,67 +78,61 @@
         .btn-primary:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 10px 20px -10px var(--accent); }
         .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
         .btn-outline:hover { border-color: var(--accent); background: var(--surface); transform: translateY(-3px); }
-
-        /* Social Icons */
         .social-icons { display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
         .social-icons a { color: var(--text-secondary); transition: 0.3s; }
         .social-icons a:hover { color: var(--accent); transform: scale(1.2) rotate(5deg); }
 
-        /* --- 5. SECTION STYLES --- */
+        /* --- 5. SECTIONS --- */
         .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; margin-top: 70px; }
         .section-header h2 { font-size: 1.5rem; color: var(--text-primary); }
         .line { flex: 1; height: 1px; background: var(--border); }
 
-        /* --- 6. SKILLS GRID --- */
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: 0.3s; }
-        .skill-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .skills-grid, .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-card, .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: 0.3s; }
+        .skill-card:hover, .edu-card:hover { border-color: var(--accent); transform: translateY(-5px); }
         .skill-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 12px; }
-        .skill-title { font-weight: 700; margin-bottom: 10px; font-size: 1rem; }
-        .skill-list { list-style: none; }
-        .skill-list li { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; }
+        .skill-title, .edu-info h3 { font-weight: 700; margin-bottom: 5px; font-size: 1rem; }
+        .edu-info h3 { font-size: 1.15rem; }
+        .skill-list, .job-desc { list-style: none; padding-left: 0; }
+        .skill-list li, .job-desc li { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; }
+        .job-desc li { font-family: var(--font-main); font-size: 0.95rem; margin-bottom: 8px; position: relative; padding-left: 18px; line-height: 1.5; align-items: flex-start; }
         .skill-list li::before { content: "▹"; color: var(--accent); margin-right: 8px; }
-
-        /* --- 7. EXPERIENCE & EDUCATION --- */
-        .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 25px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; transition: 0.3s; }
-        .edu-card:hover { border-color: var(--accent); transform: translateX(5px); }
-        .edu-info { max-width: 80%; }
-        .edu-info h3 { font-size: 1.15rem; margin-bottom: 5px; }
-        .edu-info p { color: var(--accent); font-weight: 500; margin-bottom: 5px; font-size: 0.95rem; }
-        .edu-info span { color: var(--text-secondary); font-size: 0.9rem; }
+        .job-desc li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+        .edu-info p { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
         .edu-year { font-family: var(--font-code); background: var(--accent-glow); color: var(--accent); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; white-space: nowrap; }
 
-        .job-desc { margin-top: 15px; list-style: none; padding-left: 0; }
-        .job-desc li { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 8px; position: relative; padding-left: 18px; line-height: 1.5; }
-        .job-desc li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
-
-        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
-
-        /* --- 8. PROJECT GRID --- */
+        /* --- 6. PROJECTS --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
-        .project-card { 
-            background: var(--surface); border: 1px solid var(--border); border-radius: 12px; 
-            overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; 
-        }
+        .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4); }
-        
         .project-thumb { width: 100%; height: 180px; background-color: #000; position: relative; overflow: hidden; }
         .project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.9; }
         .project-card:hover .project-thumb img { transform: scale(1.1); opacity: 1; }
-        
         .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
-        .project-header { margin-bottom: 10px; }
-        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 10px; }
         .project-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6; }
-        
         .project-details { margin-bottom: 20px; padding-left: 0; list-style: none; flex-grow: 1; }
         .project-details li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; position: relative; padding-left: 15px; line-height: 1.4; }
         .project-details li::before { content: "▹"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
-
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
         .tag { font-size: 0.75rem; font-family: var(--font-code); color: var(--accent); background: var(--accent-glow); padding: 4px 10px; border-radius: 4px; }
-        
-        /* --- 9. FOOTER --- */
+
+        /* --- 7. BACK TO TOP BUTTON --- */
+        #backToTop {
+            position: fixed; bottom: 30px; right: 30px;
+            background: var(--accent); color: #fff;
+            width: 50px; height: 50px; border-radius: 50%;
+            border: none; cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            opacity: 0; visibility: hidden; transition: 0.3s;
+            z-index: 99;
+        }
+        #backToTop.show { opacity: 1; visibility: visible; }
+        #backToTop:hover { transform: translateY(-5px); }
+        body:not(.light-mode) #backToTop { color: #0f172a; }
+
         footer { text-align: center; padding: 60px 0 30px; color: var(--text-secondary); font-size: 0.85rem; }
 
         @media (max-width: 600px) {
@@ -220,11 +161,14 @@
             </div>
             
             <h1>Muhammad Septian Nugroho</h1>
-            <span class="role-badge">Data Scientist | Machine Learning Engineer</span>
+            
+            <div class="role-badge">
+                <span id="typewriter-text"></span><span class="cursor">&nbsp;</span>
+            </div>
             
             <p class="bio-text">
                 Results-driven Data Scientist specializing in <strong>Predictive Modeling</strong>, <strong>NLP</strong>, and <strong>Business Intelligence</strong>. 
-                I transform complex datasets into actionable strategic insights through advanced machine learning pipelines.
+                I transform complex datasets into actionable strategic insights.
             </p>
 
             <div class="action-buttons">
@@ -313,7 +257,6 @@
         </div>
 
         <div class="project-grid">
-            
             <div class="project-card reveal">
                 <div class="project-thumb">
                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Credit+Risk+Analysis" alt="Credit Risk">
@@ -432,10 +375,14 @@
         <footer class="reveal">
             <p>&copy; 2025 Muhammad Septian Nugroho. <br>Designed for Impact.</p>
         </footer>
+
+        <button id="backToTop" onclick="scrollToTop()">
+            <i class="fas fa-arrow-up"></i>
+        </button>
     </div>
 
     <script>
-        // 1. Theme Toggle
+        // 1. THEME TOGGLE
         const toggleBtn = document.getElementById('theme-toggle');
         const icon = toggleBtn.querySelector('i');
         const body = document.body;
@@ -448,36 +395,71 @@
 
         toggleBtn.addEventListener('click', () => {
             body.classList.toggle('light-mode');
-            
             if(body.classList.contains('light-mode')){
-                icon.classList.remove('fa-sun');
-                icon.classList.add('fa-moon');
-                localStorage.setItem('theme', 'light');
+                icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); localStorage.setItem('theme', 'light');
             } else {
-                icon.classList.remove('fa-moon');
-                icon.classList.add('fa-sun');
-                localStorage.setItem('theme', 'dark');
+                icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); localStorage.setItem('theme', 'dark');
             }
         });
 
-        // 2. Scroll Animation (Intersection Observer)
-        const observerOptions = {
-            threshold: 0.1, // Muncul saat 10% elemen masuk layar
-            rootMargin: "0px 0px -50px 0px"
-        };
-
+        // 2. SCROLL ANIMATION
+        const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
         const observer = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('active');
-                }
+                if (entry.isIntersecting) { entry.target.classList.add('active'); }
             });
         }, observerOptions);
+        document.querySelectorAll('.reveal').forEach((el) => { observer.observe(el); });
 
-        // Pilih semua elemen yang punya class 'reveal'
-        document.querySelectorAll('.reveal').forEach((el) => {
-            observer.observe(el);
-        });
+        // 3. TYPEWRITER EFFECT
+        const textElement = document.getElementById('typewriter-text');
+        const phrases = ['Data Scientist', 'Machine Learning Engineer', 'AI Enthusiast'];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+
+        function type() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                textElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                textElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+
+            let typeSpeed = isDeleting ? 50 : 100;
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typeSpeed = 2000; // Pause at end of word
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typeSpeed = 500; // Pause before new word
+            }
+
+            setTimeout(type, typeSpeed);
+        }
+        
+        // Start typing on load
+        document.addEventListener('DOMContentLoaded', type);
+
+        // 4. BACK TO TOP BUTTON
+        const backToTopBtn = document.getElementById('backToTop');
+        
+        window.onscroll = function() {
+            if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+                backToTopBtn.classList.add('show');
+            } else {
+                backToTopBtn.classList.remove('show');
+            }
+        };
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
     </script>
 </body>
 </html>
