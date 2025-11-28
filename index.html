@@ -1,439 +1,483 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Portfolio</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caveat&display=swap">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-V7SKLSRRHT"></script>
     <script>
-        tailwind.config = {
-            darkMode: 'class',
-        }
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-V7SKLSRRHT');
     </script>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Muhammad Septian Nugroho | Data Scientist</title>
+    <meta name="description" content="Portfolio of Muhammad Septian Nugroho - Data Scientist delivering high-accuracy predictive models and business intelligence solutions.">
+    <meta property="og:title" content="Muhammad Septian Nugroho | Data Scientist">
+    <meta property="og:description" content="Specializing in Credit Risk Modeling, Churn Prediction, and NLP Analytics. View my portfolio.">
+    <meta property="og:image" content="https://ui-avatars.com/api/?name=Muhammad+Septian&background=0f172a&color=38bdf8&size=512"> 
+    <meta property="og:type" content="website">
+
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        .body {
-            font-family: "Inter", sans-serif
+        /* --- 1. CSS VARIABLES --- */
+        :root {
+            --bg: #0f172a;        /* Slate 900 */
+            --surface: #1e293b;   /* Slate 800 */
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --accent: #38bdf8;    /* Sky Blue */
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --border: rgba(255, 255, 255, 0.1);
+            
+            --font-main: 'Outfit', sans-serif;
+            --font-code: 'JetBrains Mono', monospace;
         }
 
-        html {
-            scroll-behavior: smooth;
+        body.light-mode {
+            --bg: #f8fafc;
+            --surface: #ffffff;
+            --text-primary: #0f172a;
+            --text-secondary: #64748b;
+            --accent: #0284c7;    /* Deep Blue */
+            --accent-glow: rgba(2, 132, 199, 0.1);
+            --border: rgba(0, 0, 0, 0.1);
         }
 
-        .fade-in {
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-primary);
+            font-family: var(--font-main);
+            line-height: 1.6;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* --- 2. ANIMATION CLASSES --- */
+        .reveal {
             opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease-out;
+            transform: translateY(40px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
         }
-        .caveat {
-            font-family: 'Caveat', cursive;
-        }
-        
-        .fade-in.visible {
+
+        .reveal.active {
             opacity: 1;
             transform: translateY(0);
         }
+
+        .reveal-delay-1 { transition-delay: 0.1s; }
+        .reveal-delay-2 { transition-delay: 0.2s; }
+        .reveal-delay-3 { transition-delay: 0.3s; }
+
+        /* --- 3. NAV --- */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .brand { font-family: var(--font-code); font-weight: 700; color: var(--accent); font-size: 1.1rem; }
+        .theme-toggle {
+            background: var(--surface); border: 1px solid var(--border); color: var(--text-primary);
+            width: 40px; height: 40px; border-radius: 50%; cursor: pointer; display: flex;
+            align-items: center; justify-content: center; transition: 0.3s;
+        }
+        .theme-toggle:hover { background: var(--border); color: var(--accent); }
+
+        /* --- 4. HERO SECTION --- */
+        .hero { text-align: center; margin-bottom: 60px; }
         
-        .rotate-icon {
+        .avatar-container { width: 140px; height: 140px; margin: 0 auto 20px; position: relative; }
+        .avatar-img { 
+            width: 100%; height: 100%; border-radius: 50%; object-fit: cover; 
+            border: 3px solid var(--accent); background-color: var(--surface); 
+            box-shadow: 0 0 20px var(--accent-glow);
             transition: transform 0.5s ease;
         }
+        .avatar-img:hover { transform: scale(1.05); }
         
-        .rotate-icon.rotate {
-            transform: rotate(180deg);
+        .hero h1 { font-size: 2.5rem; margin-bottom: 8px; font-weight: 700; letter-spacing: -1px; }
+        .role-badge { 
+            display: inline-block; background: var(--accent-glow); color: var(--accent); 
+            padding: 6px 16px; border-radius: 50px; font-size: 0.9rem; 
+            font-family: var(--font-code); margin-bottom: 20px; border: 1px solid var(--accent); 
         }
+        .bio-text { color: var(--text-secondary); max-width: 750px; margin: 0 auto 30px; font-size: 1.1rem; }
+
+        /* Buttons */
+        .action-buttons { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; margin-bottom: 30px; }
+        .btn { display: flex; align-items: center; justify-content: center; gap: 10px; padding: 12px 28px; border-radius: 8px; text-decoration: none; font-weight: 500; transition: 0.3s; font-size: 1rem; }
+        .btn-primary { background: var(--accent); color: #fff; border: 1px solid var(--accent); font-weight: 600; }
+        body:not(.light-mode) .btn-primary { color: #0f172a; } 
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-3px); box-shadow: 0 10px 20px -10px var(--accent); }
+        .btn-outline { background: transparent; border: 1px solid var(--border); color: var(--text-primary); }
+        .btn-outline:hover { border-color: var(--accent); background: var(--surface); transform: translateY(-3px); }
+
+        /* Social Icons */
+        .social-icons { display: flex; justify-content: center; gap: 20px; font-size: 1.5rem; }
+        .social-icons a { color: var(--text-secondary); transition: 0.3s; }
+        .social-icons a:hover { color: var(--accent); transform: scale(1.2) rotate(5deg); }
+
+        /* --- 5. SECTION STYLES --- */
+        .section-header { display: flex; align-items: center; gap: 15px; margin-bottom: 25px; margin-top: 70px; }
+        .section-header h2 { font-size: 1.5rem; color: var(--text-primary); }
+        .line { flex: 1; height: 1px; background: var(--border); }
+
+        /* --- 6. SKILLS GRID --- */
+        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .skill-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: 0.3s; }
+        .skill-card:hover { border-color: var(--accent); transform: translateY(-5px); }
+        .skill-icon { font-size: 1.5rem; color: var(--accent); margin-bottom: 12px; }
+        .skill-title { font-weight: 700; margin-bottom: 10px; font-size: 1rem; }
+        .skill-list { list-style: none; }
+        .skill-list li { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; }
+        .skill-list li::before { content: "▹"; color: var(--accent); margin-right: 8px; }
+
+        /* --- 7. EXPERIENCE & EDUCATION --- */
+        .edu-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 25px; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; transition: 0.3s; }
+        .edu-card:hover { border-color: var(--accent); transform: translateX(5px); }
+        .edu-info { max-width: 80%; }
+        .edu-info h3 { font-size: 1.15rem; margin-bottom: 5px; }
+        .edu-info p { color: var(--accent); font-weight: 500; margin-bottom: 5px; font-size: 0.95rem; }
+        .edu-info span { color: var(--text-secondary); font-size: 0.9rem; }
+        .edu-year { font-family: var(--font-code); background: var(--accent-glow); color: var(--accent); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; white-space: nowrap; }
+
+        .job-desc { margin-top: 15px; list-style: none; padding-left: 0; }
+        .job-desc li { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 8px; position: relative; padding-left: 18px; line-height: 1.5; }
+        .job-desc li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        .certs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+
+        /* --- 8. PROJECT GRID --- */
+        .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
+        .project-card { 
+            background: var(--surface); border: 1px solid var(--border); border-radius: 12px; 
+            overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; 
+        }
+        .project-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4); }
         
-        .circle-expand {
-            width: 250vmax;
-            height: 250vmax;
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+        .project-thumb { width: 100%; height: 180px; background-color: #000; position: relative; overflow: hidden; }
+        .project-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; opacity: 0.9; }
+        .project-card:hover .project-thumb img { transform: scale(1.1); opacity: 1; }
+        
+        .project-content { padding: 25px; display: flex; flex-direction: column; flex-grow: 1; }
+        .project-header { margin-bottom: 10px; }
+        .project-title { font-size: 1.25rem; font-weight: 700; color: var(--text-primary); }
+        .project-desc { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 15px; line-height: 1.6; }
+        
+        .project-details { margin-bottom: 20px; padding-left: 0; list-style: none; flex-grow: 1; }
+        .project-details li { font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 8px; position: relative; padding-left: 15px; line-height: 1.4; }
+        .project-details li::before { content: "▹"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
+
+        .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
+        .tag { font-size: 0.75rem; font-family: var(--font-code); color: var(--accent); background: var(--accent-glow); padding: 4px 10px; border-radius: 4px; }
+        
+        /* --- 9. FOOTER --- */
+        footer { text-align: center; padding: 60px 0 30px; color: var(--text-secondary); font-size: 0.85rem; }
+
+        @media (max-width: 600px) {
+            .hero h1 { font-size: 2rem; }
+            .action-buttons { flex-direction: column; width: 100%; }
+            .btn { width: 100%; }
+            .project-thumb { height: 200px; }
+            .edu-info { max-width: 100%; }
+            .container { padding: 20px; }
         }
     </style>
 </head>
+<body>
 
-<body class="bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors duration-300">
-    <!-- Navbar -->
-    <nav class="fixed top-0 left-0 right-0 z-50 bg-white dark:bg-gray-900 shadow-md">
-        <div class="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
-            <h1 class="text-xl font-bold text-gray-900 dark:text-white">Portfolio</h1>
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-6 text-sm font-medium text-gray-700 dark:text-gray-200">
-                <a href="#about" class="block hover:text-blue-600 dark:hover:text-blue-400">About</a>
-                <a href="#skills" class="block hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
-                <a href="#experience" class="block hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
-                <a href="#portfolio" class="block hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
-                <a href="#certificates" class="block hover:text-blue-600 dark:hover:text-blue-400">Certificates</a>
-                <a href="#contact" class="block hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
+    <div class="container">
+        <nav>
+            <div class="brand">&lt;MSN /&gt;</div>
+            <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Theme">
+                <i class="fas fa-sun"></i>
+            </button>
+        </nav>
+
+        <section class="hero reveal">
+            <div class="avatar-container">
+                <img src="https://ui-avatars.com/api/?name=Muhammad+Septian&background=0D8ABC&color=fff&size=256" alt="Muhammad Septian Profile" class="avatar-img">
             </div>
-            <!-- Dark Mode Button -->
-            <div class="flex items-center space-x-3">
-                <button id="toggleTheme" class="p-2 rounded-full bg-gray-200 dark:bg-gray-700 text-xl">
-        <i id="themeIcon" class="ph ph-moon rotate-icon"></i>
-      </button>
-                <!-- Mobile Toggle -->
-                <button id="menuToggle" class="md:hidden text-2xl text-gray-700 dark:text-gray-200 focus:outline-none">
-        <i class="ph ph-list"></i>
-      </button>
-            </div>
-        </div>
-
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden flex-col px-6 pb-4 space-y-2 text-sm text-gray-700 dark:text-gray-200 bg-white dark:bg-gray-900">
-            <a href="#about" class="block hover:text-blue-600 dark:hover:text-blue-400">About</a>
-            <a href="#skills" class="block hover:text-blue-600 dark:hover:text-blue-400">Skills</a>
-            <a href="#experience" class="block hover:text-blue-600 dark:hover:text-blue-400">Experience</a>
-            <a href="#portfolio" class="block hover:text-blue-600 dark:hover:text-blue-400">Projects</a>
-            <a href="#certificates" class="block hover:text-blue-600 dark:hover:text-blue-400">Certificates</a>
-            <a href="#contact" class="block hover:text-blue-600 dark:hover:text-blue-400">Contact</a>
-        </div>
-    </nav>
-    
-    <!-- Hero Section -->
-    <section id="hero" class="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-100 to-purple-200 dark:from-gray-800 dark:to-gray-900 pt-20">
-        <div class="text-center fade-in max-w-4xl mx-auto px-4">
-            <h2 class="text-4xl font-bold mb-4">Hi, I'm Muhammad Septian Nugroho</h2>
-            <p class="text-lg">A Data Scientist passionate about building intelligent solutions that drive impact—from predictive models and insightful visualizations to automated workflows.</p>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="min-h-screen px-6 py-20 bg-white dark:bg-gray-900">
-        <div class="max-w-4xl mx-auto px-4 fade-in" style="margin-bottom: 200px;">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                About Me
-                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
-            </h3>
-            <p class="text-lg mb-6 text-justify">
-                I am a fresh graduate in Informatics Engineering with a focus on Data Science from Universitas Kristen Satya Wacana. I have a strong passion for data analysis, predictive modeling, and building intelligent solutions.
-                With hands-on experience in various data-driven projects, I strive to combine logic and creativity to turn complex data into actionable insights. 
+            
+            <h1>Muhammad Septian Nugroho</h1>
+            <span class="role-badge">Data Scientist | Machine Learning Engineer</span>
+            
+            <p class="bio-text">
+                Results-driven Data Scientist specializing in <strong>Predictive Modeling</strong>, <strong>NLP</strong>, and <strong>Business Intelligence</strong>. 
+                I transform complex datasets into actionable strategic insights through advanced machine learning pipelines.
             </p>
 
-            <p class="text-lg mb-6 text-justify">
-                During my internship as a Data Analyst, I led a data team in delivering predictive models with 85% accuracy and received internal recognition for analytical excellence. I’ve also worked on machine learning projects involving time-series prediction and
-                classification, supported by data visualization to deliver actionable insights.
-            </p>
+            <div class="action-buttons">
+                <a href="CV_Muhammad_Septian_Nugroho.pdf" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-file-alt"></i> Download Resume
+                </a>
+                <a href="mailto:muhammadsian00@gmail.com" class="btn btn-outline">
+                    <i class="fas fa-paper-plane"></i> Contact Me
+                </a>
+            </div>
 
-            <p class="text-lg mb-6 text-justify">
-                I am committed to continuous learning, clear communication, and delivering valuable contributions in every project. Whether working independently or as part of a team, I always aim for data-informed decisions and impactful intelligent solutions.
-            </p>
-        
+            <div class="social-icons">
+                <a href="https://linkedin.com/in/muhammadseptiannugroho" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/altianten" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/6282325279005" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </section>
+
+        <div class="section-header reveal">
+            <h2>Core Competencies</h2>
+            <div class="line"></div>
         </div>
-    </section>
-
-    <!-- Skills Section-->
-    <section id="skills" class="px-6 py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-5xl mx-auto fade-in">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                Skills
-                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
-            </h3>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Python</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Excel</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">SQL</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Tensorflow</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">ETL</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Power BI</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">SPSS</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">HTML</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">CSS</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">JavaScript</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Tailwind CSS</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">PHP</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Laravel</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Figma</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Adobe XD</span>
-                <span class="bg-gray-200 dark:bg-gray-700 rounded-full px-4 py-2">Microsoft Office</span>
-
+        <div class="skills-grid">
+            <div class="skill-card reveal reveal-delay-1">
+                <div class="skill-icon"><i class="fas fa-laptop-code"></i></div>
+                <h3 class="skill-title">Advanced Analytics</h3>
+                <ul class="skill-list">
+                    <li>Python (Pandas, NumPy)</li>
+                    <li>Predictive Modeling</li>
+                    <li>Feature Engineering</li>
+                    <li>Statistical Analysis</li>
+                </ul>
+            </div>
+            <div class="skill-card reveal reveal-delay-2">
+                <div class="skill-icon"><i class="fas fa-brain"></i></div>
+                <h3 class="skill-title">Machine Learning</h3>
+                <ul class="skill-list">
+                    <li>Ensemble (XGBoost/CatBoost)</li>
+                    <li>Deep Learning (TensorFlow)</li>
+                    <li>NLP & Sentiment Analysis</li>
+                    <li>Model Optimization (Optuna)</li>
+                </ul>
+            </div>
+            <div class="skill-card reveal reveal-delay-1">
+                <div class="skill-icon"><i class="fas fa-database"></i></div>
+                <h3 class="skill-title">Data Engineering</h3>
+                <ul class="skill-list">
+                    <li>SQL (MySQL, Oracle)</li>
+                    <li>ETL Pipeline Design</li>
+                    <li>Data Cleaning & Scaling</li>
+                    <li>Handling Imbalanced Data</li>
+                </ul>
+            </div>
+            <div class="skill-card reveal reveal-delay-2">
+                <div class="skill-icon"><i class="fas fa-chart-line"></i></div>
+                <h3 class="skill-title">Visualization</h3>
+                <ul class="skill-list">
+                    <li>Power BI & Looker Studio</li>
+                    <li>Interactive Dashboards</li>
+                    <li>Streamlit Web Apps</li>
+                    <li>Data Storytelling</li>
+                </ul>
             </div>
         </div>
-    </section>
-    <!--Experience Section-->
-    <section id="experience" class="px-6 py-20 bg-white dark:bg-gray-900">
-        <div class="max-w-5xl mx-auto fade-in">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                Experiences
-                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
-            </h3>
-            <div class="max-w-5xl mx-auto px-4 space-y-6">
-                <div>
-                    <strong>Data Analyst Intern</strong>
-                    - PT Zona Akselerasi Pendidikan (Zenius Education)
-                    <em>(Aug 2022 - Dec 2022)</em>
-                    <ul class="list-disc pl-5 space-y-2">
-                        <li>Performed feature engineering, including missing value treatment, categorical encoding, and numerical feature scaling.</li>
-                        <li>Conducted exploratory data analysis (EDA) to uncover relationships between customer behavior and default risk.</li>
-                        <li>Built and evaluated classification models (Logistic Regression, Random Forest, XGBoost) to predict credit default risk, optimized using AUC and accuracy metrics.</li>
-                        <li>Merged and cleaned multiple datasets (application, bureau, credit card, etc.) to build a consolidated and reliable training dataset.</li>
+
+        <div class="section-header reveal">
+            <h2>Professional Experience</h2>
+            <div class="line"></div>
+        </div>
+        <div class="edu-card reveal">
+            <div class="edu-info">
+                <h3>Data Analyst</h3>
+                <p>PT Zona Akselerasi Pendidikan</p>
+                <ul class="job-desc">
+                    <li><strong>Strategic Optimization:</strong> Led the team to optimize classification models, achieving an <strong>85% accuracy rate</strong> in predictive tasks.</li>
+                    <li><strong>Data Engineering:</strong> Executed end-to-end data preprocessing, including feature engineering, missing value imputation, and categorical encoding.</li>
+                    <li><strong>Model Deployment:</strong> Implemented robust Logistic Regression and Random Forest algorithms to solve business classification challenges.</li>
+                </ul>
+            </div>
+            <div class="edu-year">2023 - Present</div>
+        </div>
+
+        <div class="section-header reveal">
+            <h2>Featured Projects</h2>
+            <div class="line"></div>
+        </div>
+
+        <div class="project-grid">
+            
+            <div class="project-card reveal">
+                <div class="project-thumb">
+                    <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Credit+Risk+Analysis" alt="Credit Risk">
+                </div>
+                <div class="project-content">
+                    <div class="project-header"><h3 class="project-title">Credit Risk Assessment System</h3></div>
+                    <p class="project-desc">
+                        Built a robust risk scoring engine achieving an <strong>ROC AUC of ~0.91</strong> to strengthen financial decision-making transparency.
+                    </p>
+                    <ul class="project-details">
+                        <li>Designed ML pipelines focusing on feature engineering and ensemble modeling.</li>
+                        <li>Delivered actionable insights through feature importance analysis and dashboards.</li>
                     </ul>
+                    <div class="project-tech">
+                        <span class="tag">Python</span><span class="tag">Risk Modeling</span><span class="tag">Ensemble</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="px-6 py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-5xl mx-auto">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                Projects
-                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
-            </h3>
-            <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
-                    <img src="assets/HCR.png" alt="" class="w-full h-50 object-cover rounded mb-4">
-                    <strong>Home Credit Risk (Internship Project)</strong>
-                    <p class="mb-2" style="text-align: justify;">This project focuses on predicting the likelihood of credit default using the publicly available Home Credit Default Risk dataset. The workflow involves data cleaning, preparation, and applying automated feature engineering techniques using the FeatureTools library. Multiple relational tables such as application_train, bureau, and previous_application are integrated and transformed into a comprehensive dataset ready for machine learning.</p>
-                    <a href="https://github.com/altianten/data-analyst-portofolio/tree/main/home-credit-risk" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
+            <div class="project-card reveal reveal-delay-1">
+                <div class="project-thumb">
+                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Customer+Churn+AI" alt="Churn Prediction">
                 </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
-                    <img src="Recommendation-System/Visualization.png" alt="" class="w-full h-50 object-cover rounded mb-4">
-                    <strong>E-Commerce Purchase Recommendation Systems</strong>
-                    <p class="mb-2" style="text-align: justify;">This project is a hands-on implementation of a content-based recommendation system. It focuses on solving a real-world business problem: how to suggest relevant products to customers based on item similarity. The entire process, from raw data to a working model, is documented in this repository.</p>
-                    <a href="https://github.com/altianten/E-commerce-Recommendation-Engine-An-Amazon-Data-Case-Study" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
-                </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
-                    <img src="Sentiment-Analysis/model_performance.png" alt="" class="w-full h-50 object-cover rounded mb-4">
-                    <strong>Shopee Sentiment Analysis Chatbot</strong>
-                    <p class="mb-2" style="text-align: justify;">This project aims to analyze the sentiment of user reviews on Shopee using Natural Language Processing (NLP) and Machine Learning. The model utilizes a Naive Bayes Classifier with TF-IDF features. The final output is an interactive Streamlit-based application capable of predicting review sentiment (Positive, Negative, or Neutral)</p>
-                    <a href="https://github.com/altianten/altianten.github.io/tree/main/Sentiment-Analysis" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
-                </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
-                    <img src="E-commerce Purchase Prediction/Visualizations/feature_importance.png" alt="" class="w-full h-50 object-cover rounded mb-4">
-                    <strong>E-Commerce Purchase Prediction</strong>
-                    <p class="mb-2" style="text-align: justify;">This project develops a highly accurate machine learning model to predict customer purchase behavior in e-commerce platforms. The solution achieves 98%+ accuracy across all key metrics (Accuracy, Precision, Recall, F1 Score, and ROC AUC) using advanced ensemble methods and sophisticated feature engineering techniques.</p>
-                    <a href="https://github.com/altianten/E-commerce-Purchase-Predicition" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
-                </div>
-                <div class="bg-white dark:bg-gray-700 rounded-lg shadow p-6 fade-in">
-                    <img src="Large Scale Balanced Churn/images/confusion_matrix.png" alt="" class="w-full h-50 object-cover rounded mb-4">
-                    <strong>Large-Scale Balanced Churn Predictor</strong>
-                    <p class="mb-2" style="text-align: justify;">This project develops a highly accurate, memory-efficient machine learning model to predict customer churn in large-scale datasets. The solution achieves 98%+ accuracy while maintaining minimal RAM usage, making it suitable for deployment in resource-constrained environments.
+                <div class="project-content">
+                    <div class="project-header"><h3 class="project-title">Large-Scale Churn Predictor</h3></div>
+                    <p class="project-desc">
+                        Engineered a high-performance churn prediction system achieving <strong>97%+ accuracy</strong> on large-scale datasets.
                     </p>
-                    <ul>The model can be deployed as a real-time API to:
-                       <li>1. Identify customers at risk of churning</li>
-                       <li>2. Enable targeted retention campaigns</li>
-                       <li>3. Optimize customer lifetime value</li>
-                       <li>4. Reduce unnecessary marketing spend</li>
+                    <ul class="project-details">
+                        <li>Solved severe class imbalance using SMOTE and advanced sampling strategies.</li>
+                        <li>Optimized a stacking ensemble (XGBoost, LightGBM, CatBoost) using Optuna for hyperparameter tuning.</li>
                     </ul>
-                    <a href="https://github.com/altianten/Large-Scale-Balanced-Churn" class="text-blue-600 dark:text-blue-400 hover:underline">View on Github</a>
+                    <div class="project-tech">
+                        <span class="tag">XGBoost</span><span class="tag">Optuna</span><span class="tag">SMOTE</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Certificates Section-->
-    <section id="certificates" class="px-6 py-20 bg-white dark:bg-gray-900">
-        <div class="max-w-5xl mx-auto px-4 space-y-6 fade-in">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                Certificates
-
-            </h3>
-            <ul class="list-disc pl-5 space-y-2">
-                <li>
-                    <em>
-                        (Aug 2025)
-                    </em>Artificial Intelligence Fundamentals, IBM
-                </li>
-                <li>
-                    <em>
-                        (Aug 2025)
-                    </em>Data Classification and Summarization Using IBM Granite, IBM
-                </li>
-                <li>
-                    <em>
-                        (Feb 2022)
-                    </em>Data Wrangling Python, DQLab
-                </li>
-                <li>
-                    <em>
-                        (Feb 2022)
-                    </em>Python Fundamental for Data Science, DQLab
-                </li>
-                <li>
-                    <em>
-                        (Dec 2021)
-                    </em>Database Programming with PL/SQL, ORACLE Academy
-                </li>
-                <li>
-                    <em>
-                        (Jul 2021)
-                    </em>Database Design and Programming with SQL, ORACLE Academy
-                </li>
-                <li>
-                    <em>
-                        (Jan 2021)
-                    </em>Python Fundamental for Software Developmnet, Progate
-                </li>
-            </ul>
-        </div>
-        <div class="mt-6" >
-            <a href="https://drive.google.com/file/d/1ocGriir3Q1xaHwwGSpM5_SVh1cB-vwzb/view?usp=sharing" download 
-                class="block w-full sm:w-auto text-white px-6 py-3 rounded-full font-bold text-center hover:opacity-90 transition 
-                bg-gray-800 dark:bg-white dark:text-gray-900"> 📄 Download CV
-            </a>
-        </div>
-    </section>
-
-    <section id="branding" class="px-6 py-20 bg-gray-50 dark:bg-gray-800">
-        <div class="max-w-4xl mx-auto px-4 fade-in grid grid-cols-1 md:grid-cols-2 gap-8 w-full">
-            <!-- Kolom Kiri: Efek Mengetik -->
-            <div class="text-left leading-snug text-6xl font-semibold caveat">
-                I turn ideas and data into
-                <br>
-                <span id="typed-text" class="text-#212529"></span><span id="cursor" class="animate-pulse">|</span>
-            </div>
-
-            <!-- Kolom Kanan: Placeholder Teks -->
-            <div class="text-left text-base text-justify leading-relaxed">
-                <h3 class="text-4xl text-lg mb-2 text-justify" style="font-size: 28px;">
-                    Harnessing Data and Code to Drive Impact:
-                </h3>
-                <span>
-                    With a strong foundation in data analysis and machine learning, I build predictive models, uncover insights, and transform data into intelligent solutions and automated workflows — helping people and organizations make smarter, faster, and more meaningful decisions.
-                </span>
-            </div>
-        </div>
-    </section>
-    
-    <!--Contact Sections-->
-    <section id="contact" class="px-6 py-20 bg-white dark:bg-gray-900">
-        <div class="max-w-xl mx-auto fade-in ">
-            <h3 class="text-4xl font-bold mb-6 text-center relative">
-                Contact Me
-                <span class="block w-16 h-1 bg-blue-500 mx-auto mt-2 rounded"></span>
-            </h3>
-            <p class="text-lg mb-2 text-justify relative">Feel free to reach out — I'd love to hear from you.</p>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-lg mt-10">
-                <!-- 🔹 Kolom Kiri -->
-                <div class="flex justify-center flex-col gap-3">
-                    <strong>Social</strong>
-                    <p>
-                    muhammadsian00@gmail.com
+            <div class="project-card reveal">
+                <div class="project-thumb">
+                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=NLP+Sentiment+Engine" alt="NLP Sentiment">
+                </div>
+                <div class="project-content">
+                    <div class="project-header"><h3 class="project-title">E-commerce Sentiment Engine</h3></div>
+                    <p class="project-desc">
+                        Developed an end-to-end NLP solution analyzing product reviews, achieving <strong>81% precision</strong> with a tuned Naive Bayes classifier.
                     </p>
-                    <a href="https://www.linkedin.com/in/muhammad-septian-nugroho" target="_blank" class="hover:underline text-#212529">
-                    LinkedIn
-                    </a>
-                    <a href="https://instagram.com/altianten" target="_blank" class="hover:underline text-#212529">
-                    Instagram
-                    </a>
-                    <a href="https://github.com/altianten" target="_blank" class="hover:underline text-#212529">
-                    GitHub
-                    </a>
+                    <ul class="project-details">
+                        <li>Benchmarked performance against SVM and Random Forest models.</li>
+                        <li>Deployed the model into a user-facing web application using Streamlit.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tag">NLP</span><span class="tag">Streamlit</span><span class="tag">Deployment</span>
+                    </div>
                 </div>
-                <!-- 🔹 Kolom Kanan -->
-                <div class="flex flex-col gap-3 fade-in max-w-5xl mx-auto px-4 space-y-2 fade-in">
-                    <strong>Phone</strong>
-                    <a href="https://wa.me/6282325279005" target="_blank" class="hover:underline text-green-600">
-                    WhatsApp: +62 823-2527-9005
-                    </a>
-                    <strong>Location</strong>
-                    <p class="">
-                    Salatiga (50746)
-                    </p>
-                </div>
+            </div>
 
+             <div class="project-card reveal reveal-delay-1">
+                <div class="project-thumb">
+                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Amazon+RecSys" alt="Recommendation System">
+                </div>
+                <div class="project-content">
+                    <div class="project-header"><h3 class="project-title">Hybrid Recommendation Engine</h3></div>
+                    <p class="project-desc">
+                        Engineered a personalized recommendation system processing <strong>100k+ interactions</strong> using Amazon dataset.
+                    </p>
+                    <ul class="project-details">
+                        <li>Implemented Hybrid approach: Collaborative Filtering (SVD) & Content-Based (TF-IDF).</li>
+                        <li>Handled data sparsity and optimized computation using dimensionality reduction.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tag">SVD</span><span class="tag">TF-IDF</span><span class="tag">Scikit-learn</span>
+                    </div>
+                </div>
             </div>
         </div>
 
+        <div class="section-header reveal">
+            <h2>Education & Credentials</h2>
+            <div class="line"></div>
         </div>
-    </section>
+        <div class="edu-card reveal">
+            <div class="edu-info">
+                <h3>Bachelor of Informatics Engineering</h3>
+                <p>Satya Wacana Christian University</p>
+                <span>GPA: <strong>3.77 / 4.00</strong></span>
+                <ul class="job-desc" style="margin-top:5px;">
+                    <li><strong>Focus:</strong> Artificial Intelligence, Machine Learning, Statistics.</li>
+                    <li><strong>Thesis:</strong> Web-Based Information System for Tingkir Lor Tourism (Laravel).</li>
+                </ul>
+            </div>
+            <div class="edu-year">Graduated</div>
+        </div>
 
-    <footer class="text-center py-6 bg-white dark:bg-gray-800">
-        <p>&copy; 2025 Muhammad Septian Nugroho</p>
-    </footer>
+        <div class="certs-grid">
+            <div class="edu-card reveal reveal-delay-1">
+                <div class="edu-info">
+                    <h3>Data Classification & Summarization</h3>
+                    <p>IBM Granite</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-2">
+                <div class="edu-info">
+                    <h3>Artificial Intelligence Fundamentals</h3>
+                    <p>IBM</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-3">
+                <div class="edu-info">
+                    <h3>Database Programming with SQL</h3>
+                    <p>Oracle Academy</p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="reveal">
+            <p>&copy; 2025 Muhammad Septian Nugroho. <br>Designed for Impact.</p>
+        </footer>
+    </div>
 
     <script>
-        const themeBtn = document.getElementById('toggleTheme');
-        const icon = document.getElementById('themeIcon');
+        // 1. Theme Toggle
+        const toggleBtn = document.getElementById('theme-toggle');
+        const icon = toggleBtn.querySelector('i');
+        const body = document.body;
 
-        themeBtn.addEventListener('click', () => {
-            document.documentElement.classList.toggle('dark');
-            icon.classList.add('rotate');
-            setTimeout(() => {
-                icon.classList.toggle('ph-moon');
-                icon.classList.toggle('ph-sun');
-                icon.classList.remove('rotate');
-            }, 300);
+        if(localStorage.getItem('theme') === 'light'){
+            body.classList.add('light-mode');
+            icon.classList.remove('fa-sun');
+            icon.classList.add('fa-moon');
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            if(body.classList.contains('light-mode')){
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            }
         });
+
+        // 2. Scroll Animation (Intersection Observer)
+        const observerOptions = {
+            threshold: 0.1, // Muncul saat 10% elemen masuk layar
+            rootMargin: "0px 0px -50px 0px"
+        };
 
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
+                    entry.target.classList.add('active');
                 }
             });
-        }, {
-            threshold: 0.1
-        });
+        }, observerOptions);
 
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-
-        if (document.documentElement.classList.contains('dark')) {
-            icon.classList.remove('ph-moon');
-            icon.classList.add('ph-sun');
-        } else {
-            icon.classList.remove('ph-sun');
-            icon.classList.add('ph-moon');
-        }
-    </script>
-    <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-
-        menuToggle.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Pilih semua elemen yang punya class 'reveal'
+        document.querySelectorAll('.reveal').forEach((el) => {
+            observer.observe(el);
         });
     </script>
-
-    <script>
-        let wordIndex = 0;
-        let charIndex = 0;
-        let typing = true;
-        
-        const typedText = document.getElementById("typed-text");
-        const cursor = document.getElementById("cursor");
-        
-        function type() {
-            const currentWord = words[wordIndex];
-            if (typing) {
-                if (charIndex < currentWord.length) {
-                    typedText.textContent += currentWord.charAt(charIndex);
-                    charIndex++;
-                    setTimeout(type, 100);
-                } else {
-                    typing = false;
-                    setTimeout(type, 1500); // Wait before deleting
-                }
-            } else {
-                if (charIndex > 0) {
-                    typedText.textContent = currentWord.substring(0, charIndex - 1);
-                    charIndex--;
-                    setTimeout(type, 50);
-                } else {
-                    typing = true;
-                    wordIndex = (wordIndex + 1) % words.length;
-                    setTimeout(type, 200);
-                }
-            }
-        }
-        const words = ["Intelligent Solutions", "Products", "Workflows"];
-        type();
-    </script>
-
-
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
