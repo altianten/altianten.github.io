@@ -22,6 +22,7 @@
 
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon" href="https://fav.farm/🤖" />
 
     <style>
         /* --- 1. CSS VARIABLES --- */
@@ -44,7 +45,7 @@
         /* --- 2. ANIMATION CLASSES --- */
         .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s cubic-bezier(0.5, 0, 0, 1); }
         .reveal.active { opacity: 1; transform: translateY(0); }
-        .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; } .reveal-delay-3 { transition-delay: 0.3s; }
+        .reveal-delay-1 { transition-delay: 0.1s; } .reveal-delay-2 { transition-delay: 0.2s; }
 
         /* --- 3. NAV --- */
         nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 0; margin-bottom: 40px; animation: fadeInDown 1s ease-out; }
@@ -60,12 +61,11 @@
         .avatar-img:hover { transform: scale(1.05); }
         .hero h1 { font-size: 2.5rem; margin-bottom: 8px; font-weight: 700; letter-spacing: -1px; }
         
-        /* NEW: TYPEWRITER STYLE */
         .role-badge { 
             display: inline-block; background: var(--accent-glow); color: var(--accent); 
             padding: 6px 16px; border-radius: 50px; font-size: 0.95rem; 
             font-family: var(--font-code); margin-bottom: 20px; border: 1px solid var(--accent);
-            min-width: 250px; /* Mencegah layout goyang saat teks berubah */
+            min-width: 250px; 
         }
         .cursor { display: inline-block; width: 8px; background-color: var(--accent); animation: blink 1s infinite; }
         @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
@@ -95,13 +95,45 @@
         .edu-info h3 { font-size: 1.15rem; }
         .skill-list, .job-desc { list-style: none; padding-left: 0; }
         .skill-list li, .job-desc li { font-family: var(--font-code); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 6px; display: flex; align-items: center; }
-        .job-desc li { font-family: var(--font-main); font-size: 0.95rem; margin-bottom: 8px; position: relative; padding-left: 18px; line-height: 1.5; align-items: flex-start; }
         .skill-list li::before { content: "▹"; color: var(--accent); margin-right: 8px; }
-        .job-desc li::before { content: "•"; color: var(--accent); position: absolute; left: 0; font-weight: bold; }
         .edu-info p { color: var(--accent); font-weight: 500; font-size: 0.95rem; }
         .edu-year { font-family: var(--font-code); background: var(--accent-glow); color: var(--accent); padding: 5px 12px; border-radius: 4px; font-size: 0.85rem; white-space: nowrap; }
 
-        /* --- 6. PROJECTS --- */
+        /* --- 6. EXP CARD FIX --- */
+        .exp-card {
+            background: var(--surface);
+            border-left: 4px solid var(--accent); /* Aksen garis kiri */
+            border-radius: 4px 12px 12px 4px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .exp-card:hover { transform: translateX(10px); box-shadow: 0 4px 25px rgba(0,0,0,0.2); }
+
+        .exp-header {
+            display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap;
+            margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 15px;
+        }
+
+        .exp-role { font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
+        .exp-company { font-size: 1.1rem; color: var(--accent); font-weight: 500; margin-top: 4px; }
+        .exp-date { 
+            font-family: var(--font-code); font-size: 0.9rem; color: var(--text-secondary); 
+            background: rgba(255,255,255,0.05); padding: 5px 15px; border-radius: 50px;
+        }
+
+        .exp-list { list-style: none; padding: 0; margin: 0; }
+        .exp-list li {
+            position: relative; padding-left: 25px; margin-bottom: 15px; 
+            color: var(--text-secondary); font-size: 1rem; line-height: 1.6;
+        }
+        .exp-list li::before {
+            content: "▹"; position: absolute; left: 0; top: 0; color: var(--accent); font-size: 1.2rem;
+        }
+        .exp-list li strong { color: var(--text-primary); font-weight: 600; }
+
+        /* --- 7. PROJECTS --- */
         .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 25px; }
         .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: 0.3s ease; display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-7px); border-color: var(--accent); box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.4); }
@@ -117,7 +149,7 @@
         .project-tech { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
         .tag { font-size: 0.75rem; font-family: var(--font-code); color: var(--accent); background: var(--accent-glow); padding: 4px 10px; border-radius: 4px; }
 
-        /* --- 7. BACK TO TOP BUTTON --- */
+        /* --- 8. BACK TO TOP --- */
         #backToTop {
             position: fixed; bottom: 30px; right: 30px;
             background: var(--accent); color: #fff;
@@ -172,16 +204,16 @@
             </p>
 
             <div class="action-buttons">
-                <a href="CV_Muhammad_Septian_Nugroho.pdf" target="_blank" class="btn btn-primary">
-                    <i class="fas fa-file-alt"></i> Download Resume
+                <a href="https://drive.google.com/file/d/1-DCA6I7X7Db9Nn_BFqJj0HtCyL90LAu_/view?usp=sharing" target="_blank" class="btn btn-primary">
+                    <i class="fas fa-file-alt"></i> Download CV
                 </a>
-                <a href="mailto:muhammadsian00@gmail.com" class="btn btn-outline">
-                    <i class="fas fa-paper-plane"></i> Contact Me
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=muhammadsian00@gmail.com" target="_blank" class="btn btn-outline">
+                    <i class="fas fa-envelope"></i> Contact Me
                 </a>
             </div>
 
             <div class="social-icons">
-                <a href="https://linkedin.com/in/muhammadseptiannugroho" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-septian-nugroho" target="_blank"><i class="fab fa-linkedin"></i></a>
                 <a href="https://github.com/altianten" target="_blank"><i class="fab fa-github"></i></a>
                 <a href="https://wa.me/6282325279005" target="_blank"><i class="fab fa-whatsapp"></i></a>
             </div>
@@ -238,17 +270,27 @@
             <h2>Professional Experience</h2>
             <div class="line"></div>
         </div>
-        <div class="edu-card reveal">
-            <div class="edu-info">
-                <h3>Data Analyst</h3>
-                <p>PT Zona Akselerasi Pendidikan</p>
-                <ul class="job-desc">
-                    <li><strong>Strategic Optimization:</strong> Led the team to optimize classification models, achieving an <strong>85% accuracy rate</strong> in predictive tasks.</li>
-                    <li><strong>Data Engineering:</strong> Executed end-to-end data preprocessing, including feature engineering, missing value imputation, and categorical encoding.</li>
-                    <li><strong>Model Deployment:</strong> Implemented robust Logistic Regression and Random Forest algorithms to solve business classification challenges.</li>
-                </ul>
+        
+        <div class="exp-card reveal">
+            <div class="exp-header">
+                <div>
+                    <div class="exp-role">Data Analyst Intern</div>
+                    <div class="exp-company">PT Zona Akselerasi Pendidikan (Zenius Education)</div>
+                </div>
+                <div class="exp-date">Aug 2022 - Dec 2022</div>
             </div>
-            <div class="edu-year">2023 - Present</div>
+            
+            <ul class="exp-list">
+                <li>
+                    <strong>Strategic Optimization:</strong> Led the collaborative effort to build and optimize classification models, successfully achieving a model accuracy target of <strong>85%</strong>.
+                </li>
+                <li>
+                    <strong>Advanced Data Engineering:</strong> Executed rigorous feature engineering pipelines—handling missing values, encoding categorical variables, and scaling numerical features to ensure high-quality model inputs.
+                </li>
+                <li>
+                    <strong>Predictive Modeling:</strong> Developed and tuned high-performance algorithms (including <strong>Logistic Regression, Random Forest, XGBoost</strong>), evaluated by AUC and accuracy metrics to solve key business problems.
+                </li>
+            </ul>
         </div>
 
         <div class="section-header reveal">
@@ -278,7 +320,7 @@
 
             <div class="project-card reveal reveal-delay-1">
                 <div class="project-thumb">
-                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Customer+Churn+AI" alt="Churn Prediction">
+                     <img src="images/confusion_matrix.png" alt="Churn Prediction">
                 </div>
                 <div class="project-content">
                     <div class="project-header"><h3 class="project-title">Large-Scale Churn Predictor</h3></div>
@@ -297,7 +339,7 @@
 
             <div class="project-card reveal">
                 <div class="project-thumb">
-                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=NLP+Sentiment+Engine" alt="NLP Sentiment">
+                     <img src="images/model_performance.png" alt="NLP Sentiment">
                 </div>
                 <div class="project-content">
                     <div class="project-header"><h3 class="project-title">E-commerce Sentiment Engine</h3></div>
@@ -313,10 +355,29 @@
                     </div>
                 </div>
             </div>
+            
+            <div class="project-card reveal">
+                <div class="project-thumb">
+                    <img src="images/feature_importance.png" alt="Purchase Prediction">
+                </div>
+                <div class="project-content">
+                    <div class="project-header"><h3 class="project-title">E-commerce Purchase Prediction</h3></div>
+                    <p class="project-desc">
+                        Designed a high-precision ML pipeline achieving <strong>98%+ accuracy, F1, and ROC-AUC</strong> to predict user purchase intent effectively.
+                    </p>
+                    <ul class="project-details">
+                        <li>Engineered a synthetic dataset of <strong>100k+ records</strong> to simulate complex real-world user behaviors.</li>
+                        <li>Built a robust Stacking Ensemble (XGBoost, LightGBM, CatBoost, Random Forest) optimized with Optuna.</li>
+                    </ul>
+                    <div class="project-tech">
+                        <span class="tag">Stacking Ensemble</span><span class="tag">Optuna</span><span class="tag">Predictive Modeling</span>
+                    </div>
+                </div>
+            </div>
 
              <div class="project-card reveal reveal-delay-1">
                 <div class="project-thumb">
-                     <img src="https://via.placeholder.com/600x400/1e293b/38bdf8?text=Amazon+RecSys" alt="Recommendation System">
+                     <img src="images/Visualization.png" alt="Recommendation System">
                 </div>
                 <div class="project-content">
                     <div class="project-header"><h3 class="project-title">Hybrid Recommendation Engine</h3></div>
@@ -334,11 +395,12 @@
             </div>
         </div>
 
-        <div class="section-header reveal">
+<div class="section-header reveal">
             <h2>Education & Credentials</h2>
             <div class="line"></div>
         </div>
-        <div class="edu-card reveal">
+        
+        <div class="edu-card reveal" style="margin-bottom: 50px;">
             <div class="edu-info">
                 <h3>Bachelor of Informatics Engineering</h3>
                 <p>Satya Wacana Christian University</p>
@@ -351,29 +413,34 @@
             <div class="edu-year">Graduated</div>
         </div>
 
+        <h3 class="reveal" style="margin-bottom: 25px; color: var(--text-primary); font-size: 1.2rem;">
+            <i class="fas fa-certificate" style="color: var(--accent); margin-right: 10px;"></i> 
+            Professional Certifications
+        </h3>
+
         <div class="certs-grid">
             <div class="edu-card reveal reveal-delay-1">
                 <div class="edu-info">
-                    <h3>Data Classification & Summarization</h3>
-                    <p>IBM Granite</p>
+                    <h3>Database Design & Programming with SQL</h3>
+                    <p>Oracle Academy</p>
                 </div>
             </div>
             <div class="edu-card reveal reveal-delay-2">
+                <div class="edu-info">
+                    <h3>Database Programming with PL/SQL</h3>
+                    <p>Oracle Academy</p>
+                </div>
+            </div>
+            <div class="edu-card reveal reveal-delay-3">
                 <div class="edu-info">
                     <h3>Artificial Intelligence Fundamentals</h3>
                     <p>IBM</p>
                 </div>
             </div>
-            <div class="edu-card reveal reveal-delay-3">
-                <div class="edu-info">
-                    <h3>Database Programming with SQL</h3>
-                    <p>Oracle Academy</p>
-                </div>
-            </div>
         </div>
 
         <footer class="reveal">
-            <p>&copy; 2025 Muhammad Septian Nugroho. <br>Designed for Impact.</p>
+            <p>&copy; 2025 Ian's Portfolio. <br>Designed for Impact.</p>
         </footer>
 
         <button id="backToTop" onclick="scrollToTop()">
@@ -432,23 +499,19 @@
             let typeSpeed = isDeleting ? 50 : 100;
 
             if (!isDeleting && charIndex === currentPhrase.length) {
-                typeSpeed = 2000; // Pause at end of word
+                typeSpeed = 2000;
                 isDeleting = true;
             } else if (isDeleting && charIndex === 0) {
                 isDeleting = false;
                 phraseIndex = (phraseIndex + 1) % phrases.length;
-                typeSpeed = 500; // Pause before new word
+                typeSpeed = 500;
             }
-
             setTimeout(type, typeSpeed);
         }
-        
-        // Start typing on load
         document.addEventListener('DOMContentLoaded', type);
 
-        // 4. BACK TO TOP BUTTON
+        // 4. BACK TO TOP
         const backToTopBtn = document.getElementById('backToTop');
-        
         window.onscroll = function() {
             if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
                 backToTopBtn.classList.add('show');
@@ -456,10 +519,7 @@
                 backToTopBtn.classList.remove('show');
             }
         };
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
+        function scrollToTop() { window.scrollTo({ top: 0, behavior: 'smooth' }); }
     </script>
 </body>
 </html>
